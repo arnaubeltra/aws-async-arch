@@ -44,13 +44,11 @@ def index():
     
     return render_template('index.html')
 
-def process_image(image_file, email):
-    with open(image_file, 'rb') as image:
-        image_data = image.read()
-        payload = {'email': email}
-        files = {'image': image}
-        response = requests.post(URL_WORKER, data = payload, files = files)
-    
+def process_image(image_path, email):
+    payload = {'email': email}
+    image = {'image': open(image_path, 'rb')}
+    response = requests.post(URL_WORKER, data = payload, files = image)
+
     if response.status_code == 200:
         return True
     return False
