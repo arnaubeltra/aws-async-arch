@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AWS Asynchronous Architecture</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <h1>Image Processing Tool</h1>
+        <div>
+            <p>Upload the images that you want to resize, to make them more portable.</p>
+            <form action="" method="post" enctype="multipart/form-data">
+                <h3>Upload an image</h3>
+                <br>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" value="arnaubeltra@gmail.com">
+                <br>
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image" accept="image/png" value="{{ request.form['image'] }}"></input>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            {% if status_message %}
+                <p>{{ status_message }}</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
